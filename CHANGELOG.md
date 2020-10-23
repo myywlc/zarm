@@ -1,8 +1,24 @@
 # 版本更新日志 
 
-## v2.5.3
+## v2.5.6
 - Bug Fix
-  - 修复服务端渲染时出现的 `window is not defined` 的错误。[#6375267](https://github.com/ZhongAnTech/zarm/commit/6375267e3cb3fd4ea2c4c389a9332bea499442c5)
+  - [Tabs] 修复滚动边界判断时的问题。[#498](https://github.com/ZhongAnTech/zarm/pull/498)
+  - [TabBar] 修复按需加载组件时，丢失Badge组件的样式的问题。[#501](https://github.com/ZhongAnTech/zarm/pull/501)
+
+- Perf
+  - [Input] 优化虚拟键盘的鼠标定位，获取焦点自动定位到内容的尾部。[#1dca23f](https://github.com/ZhongAnTech/zarm/commit/1dca23f0d8b1a8b74902d13977423406b06c2a14)
+  - [Input] 兼容原生input的类型，如`<input type="tel" />`等。[#a057caa](https://github.com/ZhongAnTech/zarm/commit/a057caa0f53234b95500c192fcb9f72a949e2402)
+
+
+## v2.5.5
+- Feature
+  - [Tabs] 支持纵向显示。[#486](https://github.com/ZhongAnTech/zarm/pull/486)
+
+- Break Change
+  - [Tabs] 删除 `scrollThreshold` 属性，改为由 `scrollable` 属性判断是否支持滚动。
+
+- Bug Fix
+  - 修复服务端渲染时出现的 `window is not defined` 的错误。[#6375267](https://github.com/ZhongAnTech/zarm/commit/6375267e3cb3fd4ea2c4c389a9332bea499442c5) [#495](https://github.com/ZhongAnTech/zarm/pull/495)
 
 
 ## v2.5.2
@@ -12,7 +28,6 @@
 - Perf
   - 重构DOM操作工具库。[#f098d4a](https://github.com/ZhongAnTech/zarm/commit/f098d4a18d43407d79823ad5e6c7f0211cbec080)。
   - 优化调整各组件 `z-index` 堆叠顺序的css变量。[#00e0202](https://github.com/ZhongAnTech/zarm/commit/00e0202ad8a4bd2250d2226293804c022f19c613)
-
 
   ```css
   --zindex-mask: 1000;

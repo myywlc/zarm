@@ -1,6 +1,4 @@
-import { raf, cancelRaf } from './raf';
-
-let scrollRafId: number;
+import raf from 'raf';
 
 export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
 
@@ -189,13 +187,18 @@ export const getScrollContainer = (mountContainer?: ContainerType): HTMLElement 
 //   }
 // };
 
+let scrollRafId: number;
+const scrollList: { [key: number]: HTMLElement | Window } = {};
+
 export function scrollTo(
   scrollContainer: HTMLElement | Window,
   top: number,
   left: number,
   duration: number,
 ) {
-  cancelRaf(scrollRafId);
+  if (scrollList?.[scrollRafId] === scrollContainer) {
+    raf.cancel(scrollRafId);
+  }
 
   let count = 0;
   let fromLeft = 0;
@@ -222,6 +225,7 @@ export function scrollTo(
     count += 1;
     if (count < frames) {
       scrollRafId = raf(animate);
+      scrollList[scrollRafId] = scrollContainer;
     }
   }
 
